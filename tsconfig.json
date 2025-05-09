@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es2020", // Modern JavaScript features
+    "module": "commonjs", // Node.js compatibility
+    "lib": [
+      "es2020",
+      "dom"
+    ], // Include DOM and ES2020 APIs
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./", // Root directory of source files
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable compatibility with CommonJS modules
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in imports
+    "skipLibCheck": true, // Skip type checking of declaration files
+    /* Module Resolution */
+    "moduleResolution": "node", // Resolve modules like Node.js
+    "resolveJsonModule": true, // Allow importing JSON files
+    "baseUrl": "./", // Base directory for non-relative imports
+    "paths": { // Alias paths for cleaner imports
+      "@tests/*": [
+        "tests/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    },
+    /* Source Maps */
+    "sourceMap": true, // Generate source maps for debugging
+    "inlineSources": true, // Include source code in source maps
+    /* Type Checking */
+    "noImplicitAny": true, // Disallow `any` type unless explicitly specified
+    "strictNullChecks": true, // Ensure null and undefined are handled explicitly
+    "noUnusedLocals": true, // Report unused local variables
+    "noUnusedParameters": true, // Report unused function parameters
+    "noImplicitReturns": true, // Ensure all code paths return a value
+    "noFallthroughCasesInSwitch": true, // Disallow fallthrough in switch statements
+    /* Emit */
+    "removeComments": true, // Remove comments in emitted files
+    "declaration": true, // Generate `.d.ts` declaration files
+    "declarationMap": true // Generate source maps for declaration files
+  },
+  "include": [
+    "tests/**/*.ts", // Include all test files
+    "playwright.config.ts" // Include Playwright configuration
+  ],
+  "exclude": [
+    "node_modules", // Exclude dependencies
+    "dist", // Exclude output directory
+    "playwright-report", // Exclude Playwright reports
+    "test-results" // Exclude test results
+  ]
+}
