@@ -1,5 +1,6 @@
 import { test as baseTest, BrowserContext, Page } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
+import RegistrationPage from '../pages/RegistrationPage';
 
 type customBrowserContext = {
 	context: BrowserContext;
@@ -8,6 +9,7 @@ type customBrowserContext = {
 
 type pageObjects = {
 	loginPage: LoginPage;
+	registrationPage: RegistrationPage;
 };
 
 const customTest = baseTest.extend<customBrowserContext & pageObjects>({
@@ -22,6 +24,9 @@ const customTest = baseTest.extend<customBrowserContext & pageObjects>({
 	},
 	loginPage: async ({ customPage }, use) => {
 		use(new LoginPage(customPage));
+	},
+	registrationPage: async ({ customPage }, use) => {
+		use(new RegistrationPage(customPage));
 	},
 });
 
