@@ -1,5 +1,10 @@
 # 🎭 ParaBank E2E Test Automation with Playwright
+## 📌 Notes
+	• The app itself is inconsistent
+ 	• There are instances that certain functionality is down and not working 
+  	(e.g. Find Transactions, logging out after registration then when logs back error is showing)
 
+    
 ## ✨ Overview
 
 This project is an **End-to-End (E2E) automation framework** built using **Playwright** for the [ParaBank](https://parabank.parasoft.com/) online banking application. It covers both **UI** and **API** test scenarios to ensure a complete validation of key user workflows.
