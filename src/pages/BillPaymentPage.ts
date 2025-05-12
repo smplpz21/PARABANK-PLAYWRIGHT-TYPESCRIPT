@@ -32,6 +32,12 @@ export default class BillPaymentPage extends BasePage {
 		this.billPaymentSuccessMessage = page.locator('div#billpayResult');
 	}
 
+	/**
+	 * Fills in the bill payment form and submits the payment.
+	 * @param {any} data - The data for the payee, including name, address, and account details.
+	 * @param {string} amount - The amount to pay.
+	 * @param {string} fromAccount - The account to pay from.
+	 */
 	async payBill(data: any, amount: string, fromAccount: string) {
 		await this.fillTextbox(this.payeeNameTextbox, data.payeeName);
 		await this.fillTextbox(this.payeeAddressTextbox, data.payeeAddress);

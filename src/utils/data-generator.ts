@@ -1,6 +1,10 @@
 import { faker } from '@faker-js/faker';
 
-export function generateUserData() {
+/**
+ * Generates random user data for testing purposes.
+ * @returns {Object} An object containing user details such as firstName, lastName, address, city, state, zipCode, phone, ssn, username, and password.
+ */
+export function generateUserData(): any {
 	return {
 		firstName: faker.person.firstName(),
 		lastName: faker.person.lastName(),
@@ -15,7 +19,11 @@ export function generateUserData() {
 	};
 }
 
-export function generatePayeeData() {
+/**
+ * Generates random payee data for testing purposes.
+ * @returns {Object} An object containing payee details such as payeeName, payeeAddress, payeeCity, payeeState, payeeZip, payeePhone, and payeeAccountNumber.
+ */
+export function generatePayeeData(): any {
 	return {
 		payeeName: faker.person.fullName(),
 		payeeAddress: faker.location.streetAddress(),

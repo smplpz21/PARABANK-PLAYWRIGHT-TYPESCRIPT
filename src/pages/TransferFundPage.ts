@@ -21,6 +21,12 @@ export default class TransferFundPage extends BasePage {
 		this.transferFundSuccessMessage = page.locator('#showResult');
 	}
 
+	/**
+	 * Transfers funds between accounts by filling out the transfer form and submitting it.
+	 * @param {string} amount - The amount to transfer.
+	 * @param {string} fromAccount - The account to transfer funds from.
+	 * @param {string} toAccount - The account to transfer funds to.
+	 */
 	async transferFunds(amount: string, fromAccount: string, toAccount: string) {
 		await this.fillTextbox(this.amountTextbox, amount);
 		await this.selectDropdownByValue(this.fromAccountDropdown, fromAccount);

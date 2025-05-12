@@ -9,6 +9,15 @@ type apiServices = {
 	findTransactionService: FindTransctionService;
 };
 
+/**
+ * Extends the Playwright base test with custom API context and services.
+ *
+ * @typedef {Object} customApiContext
+ * @property {APIRequestContext} apiContext - The API request context for making HTTP requests.
+ *
+ * @typedef {Object} apiServices
+ * @property {FindTransctionService} findTransactionService - The service for interacting with the "Find Transaction" API.
+ */
 const customApiTest = baseTest.extend<apiServices & customApiContext>({
 	apiContext: async ({}, use) => {
 		const context = await request.newContext({ storageState: 'src/auth/login.json' });

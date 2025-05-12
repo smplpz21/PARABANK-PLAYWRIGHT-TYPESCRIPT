@@ -16,18 +16,20 @@ export default class LoginPage extends BasePage {
 		this.registerLink = page.getByRole('link', { name: 'Register' });
 	}
 
+	/**
+	 * Logs in using the provided username and password.
+	 * @param {string} username - The username to log in with.
+	 * @param {string} password - The password to log in with.
+	 */
 	async login(username: string, password: string) {
 		await this.fillTextbox(this.userNameTextbox, username);
 		await this.fillTextbox(this.passwordTextbox, password);
 		await this.clickElement(this.loginButton);
-		// await this.waitForElementVisible(this.page.getByText('Accounts Overview'));
-		// await this.takeScreenshot('login.png');
-		// await this.waitForElementHidden(this.page.getByText('Accounts Overview'));
-		// await this.takeScreenshot('login2.png');
-		// await this.isElementVisible(this.page.getByText('Accounts Overview'));
-		// await this.isElementHidden(this.page.getByText('Accounts Overview'));
 	}
 
+	/**
+	 * Clicks on the "Register" link to navigate to the registration page.
+	 */
 	async clickRegisterLink() {
 		await this.clickElement(this.registerLink);
 	}

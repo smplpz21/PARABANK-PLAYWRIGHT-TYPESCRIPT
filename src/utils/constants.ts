@@ -1,3 +1,6 @@
+/**
+ * Contains reusable message templates for various actions and events in the application.
+ */
 export const MESSAGES = {
 	REGISTRATION_SUCCESSFUL: (username: string) =>
 		`Welcome ${username} Your account was created successfully. You are now logged in.`,

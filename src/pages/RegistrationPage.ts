@@ -32,6 +32,10 @@ export default class RegistrationPage extends BasePage {
 		this.registerButton = page.getByRole('button', { name: 'REGISTER' });
 	}
 
+	/**
+	 * Registers a new user by filling out the registration form and submitting it.
+	 * @param {any} data - The user data containing fields such as firstName, lastName, address, city, state, zipCode, phone, ssn, username, and password.
+	 */
 	async registerUser(data: any) {
 		await this.fillTextbox(this.firstNameTextbox, data.firstName);
 		await this.fillTextbox(this.lastNameTextbox, data.lastName);

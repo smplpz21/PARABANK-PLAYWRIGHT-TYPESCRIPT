@@ -28,26 +28,45 @@ export default class GlobalNavigationPage extends BasePage {
 		this.accountServicesHeader = page.getByRole('heading', { name: 'Account Services' });
 	}
 
+	/**
+	 * Clicks on the "Open New Account" link.
+	 */
 	async clickOpenNewAccountLink() {
 		await this.clickElement(this.openNewAccountLink);
 	}
 
+	/**
+	 * Clicks on the "Logout" link.
+	 */
 	async clickLogoutLink() {
 		await this.clickElement(this.logoutLink);
 	}
 
+	/**
+	 * Clicks on the "Transfer Funds" link.
+	 */
 	async clickTransferFundsLink() {
 		await this.clickElement(this.transferFundsLink);
 	}
 
+	/**
+	 * Clicks on the "Bill Pay" link.
+	 */
 	async clickBillPayLink() {
 		await this.clickElement(this.billPayLink);
 	}
 
+	/**
+	 * Clicks on the "Accounts Overview" link.
+	 */
 	async clickAccountsOverviewLink() {
 		await this.clickElement(this.accountsOverviewLink);
 	}
 
+	/**
+	 * Checks if all global navigation elements are displayed.
+	 * @returns {Promise<boolean>} True if all elements are visible, false otherwise.
+	 */
 	async areAllGlobalNavigationElementDisplayed(): Promise<boolean> {
 		const elements = [
 			this.welcomeMessageGlobal,
