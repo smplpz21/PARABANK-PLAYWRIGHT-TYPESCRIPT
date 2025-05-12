@@ -6,7 +6,7 @@ export default class BasePage {
 	}
 
 	async navigateTo(url: string) {
-		await this.page.goto(url);
+		await this.page.goto(url, { waitUntil: 'load' });
 	}
 
 	protected async clickElement(element: Locator) {
@@ -18,15 +18,23 @@ export default class BasePage {
 	}
 
 	protected async getElementText(element: Locator): Promise<string> {
-		return await element.innerText();
+		return (await element.textContent())!;
 	}
 
 	protected async waitForElementVisible(element: Locator) {
-		await element.waitFor({ state: 'visible', timeout: 30000 });
+		if (this.page.isClosed()) {
+			throw new Error('Cannot wait for element — page is already closed.');
+		}
+		try {
+			await this.page.waitForLoadState('domcontentloaded');
+			await element.waitFor({ state: 'visible', timeout: 30000 });
+		} catch (error) {
+			throw new Error(`Element not visible or page was redirected/closed: ${error}`);
+		}
 	}
 
 	protected async waitForElementHidden(element: Locator) {
-		await element.waitFor({ state: 'hidden', timeout: 5000 });
+		await element.waitFor({ state: 'hidden', timeout: 30000 });
 	}
 
 	protected async takeScreenshot(filename: string) {
@@ -41,7 +49,11 @@ export default class BasePage {
 		return await element.isHidden();
 	}
 
-	protected async selectDropdownByValue(selector: string, option: string) {
-		await this.page.selectOption(selector, option);
+	protected async selectDropdownByValue(dropdown: Locator, option: string) {
+		await dropdown.selectOption({ label: option });
+	}
+
+	async getPageTitle(): Promise<string> {
+		return await this.page.title();
 	}
 }

@@ -14,3 +14,15 @@ export function generateUserData() {
 		password: faker.internet.password({ length: 8 }),
 	};
 }
+
+export function generatePayeeData() {
+	return {
+		payeeName: faker.person.fullName(),
+		payeeAddress: faker.location.streetAddress(),
+		payeeCity: faker.location.city(),
+		payeeState: faker.location.state(),
+		payeeZip: faker.location.zipCode('#####'),
+		payeePhone: faker.phone.number({ style: 'international' }),
+		payeeAccountNumber: faker.finance.accountNumber(),
+	};
+}

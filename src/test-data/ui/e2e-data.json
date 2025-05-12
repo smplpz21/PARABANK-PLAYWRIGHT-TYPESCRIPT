@@ -1,0 +1,11 @@
+{
+	"rootUrl": "/",
+	"transferAmount": "20",
+	"paymentAmount": "10",
+	"accountType": "SAVINGS",
+	"landingPageTitle": "ParaBank | Welcome | Online Banking",
+	"accountsOverviewTitle": "Accounts Overview",
+	"authStoragePath": "src/auth/login.json",
+	"metaDataPath": "src/auth/data.meta.json",
+	"newAccountBalance": "$100.00"
+}

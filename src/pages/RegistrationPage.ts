@@ -14,8 +14,6 @@ export default class RegistrationPage extends BasePage {
 	readonly passwordTextbox: Locator;
 	readonly confirmTextbox: Locator;
 	readonly registerButton: Locator;
-	readonly registerSuccessMessage: Locator;
-	readonly welcomeMessage: Locator;
 
 	constructor(readonly page: Page) {
 		super(page);
@@ -32,10 +30,6 @@ export default class RegistrationPage extends BasePage {
 		this.passwordTextbox = page.locator('input[id="customer.password"]');
 		this.confirmTextbox = page.locator('input[id="repeatedPassword"]');
 		this.registerButton = page.getByRole('button', { name: 'REGISTER' });
-		this.registerSuccessMessage = page.getByText(
-			'Your account was created successfully. You are now logged in.'
-		);
-		this.welcomeMessage = page.locator('.title');
 	}
 
 	async registerUser(data: any) {
@@ -51,9 +45,5 @@ export default class RegistrationPage extends BasePage {
 		await this.fillTextbox(this.passwordTextbox, data.password);
 		await this.fillTextbox(this.confirmTextbox, data.password);
 		await this.clickElement(this.registerButton);
-	}
-
-	async getWelcomeMessage(): Promise<string> {
-		return await this.getElementText(this.welcomeMessage);
 	}
 }

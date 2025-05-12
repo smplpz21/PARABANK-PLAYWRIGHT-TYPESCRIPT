@@ -5,8 +5,8 @@ export default class LoginPage extends BasePage {
 	readonly userNameTextbox: Locator;
 	readonly passwordTextbox: Locator;
 	readonly loginButton: Locator;
-
 	readonly registerLink: Locator;
+
 	constructor(readonly page: Page) {
 		super(page);
 		// Initialize locators

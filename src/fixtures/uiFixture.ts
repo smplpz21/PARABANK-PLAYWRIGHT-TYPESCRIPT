@@ -1,15 +1,25 @@
 import { test as baseTest, BrowserContext, Page } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage';
+import AccountsOverviewPage from '../pages/AccountsOverviewPage';
+import GlobalNavigationPage from '../pages/GlobalNavigationPage';
+import OpenNewAccountPage from '../pages/OpenNewAccountPage';
+import TransferFundPage from '../pages/TransferFundPage';
+import BillPaymentPage from '../pages/BillPaymentPage';
 
 type customBrowserContext = {
 	context: BrowserContext;
-	customPage: Page;
+	customPageFixture: Page;
 };
 
 type pageObjects = {
 	loginPage: LoginPage;
 	registrationPage: RegistrationPage;
+	accountsOverviewPage: AccountsOverviewPage;
+	globalNavigationPage: GlobalNavigationPage;
+	openNewAccountPage: OpenNewAccountPage;
+	transferFundPage: TransferFundPage;
+	billPaymentPage: BillPaymentPage;
 };
 
 const customTest = baseTest.extend<customBrowserContext & pageObjects>({
@@ -18,15 +28,30 @@ const customTest = baseTest.extend<customBrowserContext & pageObjects>({
 		await use(context);
 		await context.close();
 	},
-	customPage: async ({ context }, use) => {
+	customPageFixture: async ({ context }, use) => {
 		const page = await context.newPage();
 		await use(page);
 	},
-	loginPage: async ({ customPage }, use) => {
-		use(new LoginPage(customPage));
+	loginPage: async ({ customPageFixture }, use) => {
+		use(new LoginPage(customPageFixture));
 	},
-	registrationPage: async ({ customPage }, use) => {
-		use(new RegistrationPage(customPage));
+	registrationPage: async ({ customPageFixture }, use) => {
+		use(new RegistrationPage(customPageFixture));
+	},
+	accountsOverviewPage: async ({ customPageFixture }, use) => {
+		use(new AccountsOverviewPage(customPageFixture));
+	},
+	globalNavigationPage: async ({ customPageFixture }, use) => {
+		use(new GlobalNavigationPage(customPageFixture));
+	},
+	openNewAccountPage: async ({ customPageFixture }, use) => {
+		use(new OpenNewAccountPage(customPageFixture));
+	},
+	transferFundPage: async ({ customPageFixture }, use) => {
+		use(new TransferFundPage(customPageFixture));
+	},
+	billPaymentPage: async ({ customPageFixture }, use) => {
+		use(new BillPaymentPage(customPageFixture));
 	},
 });
 
