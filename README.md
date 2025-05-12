@@ -1,5 +1,13 @@
 # 🎭 ParaBank E2E Test Automation with Playwright
 
+
+## 📌 Notes 
+	• The app itself is incosistent 
+ 	• There are instances that certain functionality is down and won't work (e.g. Find Transctions, Logging out after registration then when logs back it fails with error)
+	
+    
+
+
 ## ✨ Overview
 
 This project is an **End-to-End (E2E) automation framework** built using **Playwright** for the [ParaBank](https://parabank.parasoft.com/) online banking application. It covers both **UI** and **API** test scenarios to ensure a complete validation of key user workflows.
@@ -54,13 +62,6 @@ execute command below to load report:
 ```bash
 npx playwright show-report
 ```
-
-## 📌 Notes
-	•	All usernames generated during registration are random and unique.
-	•	API validations use either Playwright’s built-in assertions or custom JSON schema checks
-    •	Most of UI assertions use Playwright's built-in assertions for best practice
-    •	The test suite runs in sequential order to maintain flow between UI and API validations.
-    
 
 ## Author
 Sam Lopez - Test Analyst
