@@ -27,7 +27,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 
 		await test.step('Register a new user ', async () => {
 			await loginPage.clickRegisterLink();
-			await registrationPage.registerUser(userData);
+			await registrationPage.registerUser(userData, process.env.PASSWORD!);
 			await expect(accountsOverviewPage.successRegistrationMessage).toBeVisible();
 			await expect(accountsOverviewPage.successRegistrationMessage).toHaveText(
 				MESSAGES.REGISTRATION_SUCCESSFUL(userData.username)
@@ -36,7 +36,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 
 		await test.step('Login with new user', async () => {
 			await globalNavigationPage.clickLogoutLink();
-			await loginPage.login(userData.username, userData.password);
+			await loginPage.login(userData.username, process.env.PASSWORD!);
 			// Save authenticated storageState
 			await loginPage.page.context().storageState({ path: data.authStoragePath });
 			existingAccountNumber = await accountsOverviewPage.getExistingAccountNumber();

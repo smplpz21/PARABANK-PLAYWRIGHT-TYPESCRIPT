@@ -36,7 +36,7 @@ export default class RegistrationPage extends BasePage {
 	 * Registers a new user by filling out the registration form and submitting it.
 	 * @param {any} data - The user data containing fields such as firstName, lastName, address, city, state, zipCode, phone, ssn, username, and password.
 	 */
-	async registerUser(data: any) {
+	async registerUser(data: any, password: string) {
 		await this.fillTextbox(this.firstNameTextbox, data.firstName);
 		await this.fillTextbox(this.lastNameTextbox, data.lastName);
 		await this.fillTextbox(this.addressTextbox, data.address);
@@ -46,8 +46,8 @@ export default class RegistrationPage extends BasePage {
 		await this.fillTextbox(this.phoneTextbox, data.phone);
 		await this.fillTextbox(this.ssnTextbox, data.ssn);
 		await this.fillTextbox(this.userNameTextbox, data.username);
-		await this.fillTextbox(this.passwordTextbox, data.password);
-		await this.fillTextbox(this.confirmTextbox, data.password);
+		await this.fillTextbox(this.passwordTextbox, password);
+		await this.fillTextbox(this.confirmTextbox, password);
 		await this.clickElement(this.registerButton);
 	}
 }

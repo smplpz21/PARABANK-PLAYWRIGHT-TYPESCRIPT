@@ -4,9 +4,9 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, 'src/env/.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -21,7 +21,7 @@ export default defineConfig({
 	workers: 9,
 	reporter: 'html',
 	use: {
-		baseURL: 'https://parabank.parasoft.com/',
+		baseURL: process.env.BASE_URL,
 		trace: 'on-first-retry',
 		screenshot: 'only-on-failure',
 	},

@@ -27,8 +27,7 @@ export function generateUserData(): any {
 		zipCode: faker.location.zipCode('#####'),
 		phone: faker.phone.number({ style: 'international' }),
 		ssn: faker.number.int({ min: 100000000, max: 999999999 }).toString(),
-		username: `${faker.internet.username()} ${generateRandomString(4)}`,
-		password: faker.internet.password({ length: 8 }),
+		username: `${faker.internet.username()}${generateRandomString(8)}`,
 	};
 }
 
