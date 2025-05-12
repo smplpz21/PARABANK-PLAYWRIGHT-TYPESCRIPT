@@ -1,4 +1,17 @@
 import { faker } from '@faker-js/faker';
+/**
+ * Generate a random alphanumeric string.
+ * @param length - How long the string should be.
+ * @returns A random string of the specified length.
+ */
+export function generateRandomString(length: number): string {
+	const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	let result = '';
+	for (let i = 0; i < length; i++) {
+		result += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
+	return result;
+}
 
 /**
  * Generates random user data for testing purposes.
@@ -14,7 +27,7 @@ export function generateUserData(): any {
 		zipCode: faker.location.zipCode('#####'),
 		phone: faker.phone.number({ style: 'international' }),
 		ssn: faker.number.int({ min: 100000000, max: 999999999 }).toString(),
-		username: faker.internet.username(),
+		username: `${faker.internet.username()} ${generateRandomString(4)}`,
 		password: faker.internet.password({ length: 8 }),
 	};
 }
