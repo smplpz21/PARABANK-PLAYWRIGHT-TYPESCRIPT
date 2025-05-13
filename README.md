@@ -1,31 +1,40 @@
 # 🎭 ParaBank E2E Test Automation with Playwright
-## 📌 Notes
-	• The app itself is inconsistent / intermittent (since it is a public demo application)
- 	• There are instances that certain functionality is down and not working 
-  	(e.g. Find Transactions, logging out after registration then when logs back error is showing, etc.)
-	• Test might be affected by the app intermittent functionalities (You would need to wait for a certain time)
- 	• Check the functionality or scenario manually if it is not working in automation script
- 
-
-## 📌 Notes
-
-    • The app itself is inconsistent / intermittent (since it is a public demo application)
-
-• There are instances that certain functionality is down and not working
-(e.g. Find Transactions, logging out after registration then when logs back error is showing, etc.)
-• Test might be affected by the app intermittent functionalities (You would need to wait for a certain time)
 
 ## ✨ Overview
 
 This project is an **End-to-End (E2E) automation framework** built using **Playwright** for the [ParaBank](https://parabank.parasoft.com/) online banking application. It covers both **UI** and **API** test scenarios to ensure a complete validation of key user workflows.
+
+
+## ✅ What’s Implemented in the Parabank App
+
+The Parabank application supports a variety of user actions including:
+
+- 🔐 **User Registration**  
+- 🔑 **Login & Logout**
+- 🧾 **View Account Summary & Balances**
+- 💰 **Open New Savings or Checking Accounts**
+- 🔄 **Transfer Funds Between Accounts**
+- 🧾 **Bill Payments to External Payees**
+
+These functionalities are fully automated and validated through this E2E suite.
+
+---
+
+## 🧠 Smart Registration Handling
+
+### Dynamic Username Retry Logic
+
+The registration page includes logic to automatically handle **username conflicts** during registration.
+
 
 ## 🚀 Tech Stack
 
 - [Playwright](https://playwright.dev/)
 - TypeScript
 - Faker (for generating test data)
-- JSON schema validation (for API responses)
-
+- AJV JSON schema validation (for API responses)
+- Dotenv
+- UUID
 ---
 
 ## Pre-requisites (IMPORTANT!!)
