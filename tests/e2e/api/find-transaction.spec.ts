@@ -1,9 +1,11 @@
 import { test, expect } from 'src/fixtures/apiFixture';
-import { readMetaData, readSchema } from 'src/utils/json-file-reader';
-import { validateSchema } from 'src/utils/schemaValidator';
+import { readGenericData } from 'src/utils/json-handler';
+import { validateSchema } from 'src/utils/schema-validator';
 
-const { newAccountNumber, paymentAmount, payeeName } = readMetaData('data');
-const { findTransctionByAmountResponseSchema } = readSchema('findTransactionSchema');
+const { newAccountNumber, paymentAmount, payeeName } = readGenericData('src/auth/data.meta.json');
+const { findTransctionByAmountResponseSchema } = readGenericData(
+	'src/test-data/api/schemas/findTransactionSchema.json'
+);
 
 test('Find transaction by amount | GET', async ({ findTransactionService }) => {
 	const response = await findTransactionService.findTransactionByAmount(

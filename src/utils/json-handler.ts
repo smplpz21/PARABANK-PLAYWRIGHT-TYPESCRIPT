@@ -34,19 +34,18 @@ export function writeTestData(filePath: string, data: any): void {
 }
 
 /**
- * Reads metadata from a JSON file.
- * @param {string} filename - The name of the metadata file (without extension).
- * @returns {any} The parsed metadata.
+ * Reads data from a JSON file.
+ * @param {string} filePath - The path to the JSON file.
+ * @returns {any} The parsed JSON data, or an empty object if an error occurs.
  */
-export function readMetaData(filename: string) {
-	return JSON.parse(fs.readFileSync(`src/auth/${filename}.meta.json`, 'utf-8'));
-}
+export function readGenericData(filePath: string): any {
+	try {
+		const resolvedPath = path.resolve(filePath);
+		const fileContent = fs.readFileSync(resolvedPath, 'utf-8');
+		return JSON.parse(fileContent);
+	} catch (error) {
+		console.error(`Error reading JSON file at path: ${filePath}`);
 
-/**
- * Reads a schema from a JSON file.
- * @param {string} filename - The name of the schema file (without extension).
- * @returns {any} The parsed schema.
- */
-export function readSchema(filename: string) {
-	return JSON.parse(fs.readFileSync(`src/test-data/api/schemas/${filename}.json`, 'utf-8'));
+		return {};
+	}
 }

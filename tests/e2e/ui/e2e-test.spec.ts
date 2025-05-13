@@ -1,7 +1,7 @@
 import { test, expect } from 'src/fixtures/uiFixture';
 import { generateUserData, generatePayeeData } from '../../../src/utils/data-generator';
 import { MESSAGES } from '../../../src/utils/constants';
-import { readTestData, writeTestData } from '../../../src/utils/json-file-reader';
+import { readTestData, writeTestData } from '../../../src/utils/json-handler';
 
 const data = readTestData('e2e-data', 'ui');
 const userData = generateUserData();
@@ -29,7 +29,6 @@ test.describe('Parabank End-To-End User Flow', () => {
 			await loginPage.clickRegisterLink();
 			await registrationPage.registerUser(userData, process.env.PASSWORD!);
 			await expect(accountsOverviewPage.successRegistrationMessage).toBeVisible();
-			console.log('in test ' + userData.username);
 			await expect(accountsOverviewPage.successRegistrationMessage).toHaveText(
 				MESSAGES.REGISTRATION_SUCCESSFUL(userData.username)
 			);
