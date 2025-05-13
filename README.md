@@ -72,25 +72,25 @@ npx playwright install
 
 ### 3. Running tests
 
-Running UI only (chromium)
+Run UI first then check report (chromium)
 
 ```bash
-npx playwright test tests/e2e/ui/sample-test.spec.ts  --headed --project=chromium
+npx playwright test tests/e2e/ui/e2e-test.spec.ts  --headed --project=chromium
+npx playwright show-report
+```
+
+Then run API test and check report 
+
+```bash
+npx playwright test tests/e2e/api/find-transaction.spec.ts 
+npx playwright show-report
 ```
 
 Run both UI and API (api test is dependent with UI pay bill data)
+#### Note: Report generated will be the latest run and since api will be run last, you will only see the api report, so I suggest you run it separately and check report right after executing each test
 
 ```bash
 npm run test:e2e
-```
-
-### 4. HTML Report
-
-Each test will generate a separate report
-execute command below to load report:
-
-```bash
-npx playwright show-report
 ```
 
 ## 📌 Notes
