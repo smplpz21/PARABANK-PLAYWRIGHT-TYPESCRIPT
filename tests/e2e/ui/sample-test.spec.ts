@@ -3,9 +3,9 @@ import { generateUserData, generatePayeeData } from '../../../src/utils/data-gen
 import { MESSAGES } from '../../../src/utils/constants';
 import { readTestData, writeTestData } from '../../../src/utils/json-file-reader';
 
+const data = readTestData('e2e-data', 'ui');
 const userData = generateUserData();
 const payeeData = generatePayeeData();
-const data = readTestData('e2e-data', 'ui');
 
 let existingAccountNumber: string;
 let newAccountNumber: string;
@@ -29,6 +29,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 			await loginPage.clickRegisterLink();
 			await registrationPage.registerUser(userData, process.env.PASSWORD!);
 			await expect(accountsOverviewPage.successRegistrationMessage).toBeVisible();
+			console.log('in test ' + userData.username);
 			await expect(accountsOverviewPage.successRegistrationMessage).toHaveText(
 				MESSAGES.REGISTRATION_SUCCESSFUL(userData.username)
 			);

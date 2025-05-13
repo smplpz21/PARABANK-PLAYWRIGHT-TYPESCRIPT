@@ -33,7 +33,7 @@ export default class AccountsOverviewPage extends BasePage {
 	 * @param {string} accountId - The ID of the account for which the balance is to be retrieved.
 	 * @returns {Promise<string>} The account balance as a string.
 	 */
-	async getAccountBalance(accountId: string) {
+	async getAccountBalance(accountId: string): Promise<string> {
 		return await this.getElementText(this.accountBalance(accountId));
 	}
 }

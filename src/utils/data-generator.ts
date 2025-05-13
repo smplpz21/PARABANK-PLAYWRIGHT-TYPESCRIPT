@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { v4 as uuidv4 } from 'uuid';
+
 /**
  * Generate a random alphanumeric string.
  * @param length - How long the string should be.
@@ -12,6 +13,26 @@ export function generateRandomString(length: number): string {
 		result += chars.charAt(Math.floor(Math.random() * chars.length));
 	}
 	return result;
+}
+
+/**
+ * Pick a random value from an array, avoiding the same value as last time if possible.
+ * @param values - List of possible values.
+ * @param previousValue - The value we used last time (optional).
+ * @returns A new random value from the list.
+ */
+
+export function getRandomNonRepeatingValue<T extends string>(
+	values: T[],
+	previousValue: T | null
+): T {
+	if (values.length === 0) {
+		throw new Error('Array is empty');
+	}
+
+	const filtered = values.length > 1 ? values.filter((v) => v !== previousValue) : values;
+	const randomIndex = Math.floor(Math.random() * filtered.length);
+	return filtered[randomIndex];
 }
 
 /**
