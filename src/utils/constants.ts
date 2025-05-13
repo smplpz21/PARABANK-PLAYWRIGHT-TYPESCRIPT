@@ -18,5 +18,5 @@ export const MESSAGES = {
 };
 
 export const TRANSACTIONS = {
-	MINIMUM_DEPOSIT_AMOUNT: '100',
+	MINIMUM_DEPOSIT_AMOUNT: '$100.00',
 };
