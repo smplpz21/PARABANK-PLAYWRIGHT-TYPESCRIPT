@@ -82,9 +82,6 @@ export default class RegistrationPage extends BasePage {
 			data.username = newUser.username;
 
 			await this.fillTextbox(this.userNameTextbox, '');
-			await this.fillTextbox(this.userNameTextbox, data.username);
-			await this.fillTextbox(this.passwordTextbox, password);
-			await this.fillTextbox(this.confirmTextbox, password);
 		}
 	}
 }
