@@ -1,7 +1,7 @@
 import { test, expect } from 'src/fixtures/uiFixture';
-import { generateUserData, generatePayeeData } from '../../../src/utils/data-generator';
-import { MESSAGES } from '../../../src/utils/constants';
-import { readTestData, writeTestData } from '../../../src/utils/json-handler';
+import { MESSAGES } from 'src/utils/constants';
+import { generateUserData, generatePayeeData } from 'src/utils/data-generator';
+import { readTestData, writeTestData } from 'src/utils/json-handler';
 
 const data = readTestData('e2e-data', 'ui');
 const userData = generateUserData();
@@ -37,7 +37,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 		await test.step('Login with new user', async () => {
 			await globalNavigationPage.clickLogoutLink();
 			await loginPage.login(userData.username, process.env.PASSWORD!);
-			// Save authenticated storageState
+			// Save authenticated storageState to be use in api test
 			await loginPage.page.context().storageState({ path: data.authStoragePath });
 			existingAccountNumber = await accountsOverviewPage.getExistingAccountNumber();
 			await expect(accountsOverviewPage.accountsOverviewPagetitle).toBeVisible();
@@ -59,7 +59,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 				data.accountType,
 				existingAccountNumber
 			);
-			// Save the newly created account number, amount to pay and payeeName to a JSON file
+			// Store new accountId, amountToPay and payeeName to a JSON file to be use in api test
 			writeTestData(data.metaDataPath, {
 				newAccountNumber,
 				paymentAmount: data.paymentAmount,

@@ -49,3 +49,23 @@ export function readGenericData(filePath: string): any {
 		return {};
 	}
 }
+
+/**
+ * Deletes one or more JSON files.
+ * @param {string[]} filePaths - An array of paths to the JSON files to delete.
+ */
+export function deleteJsonFiles(filePaths: string[]): void {
+	filePaths.forEach((filePath) => {
+		try {
+			const resolvedPath = path.resolve(filePath);
+			if (fs.existsSync(resolvedPath)) {
+				fs.unlinkSync(resolvedPath);
+				console.log(`File deleted: ${resolvedPath}`);
+			} else {
+				console.log(`File not found: ${resolvedPath}`);
+			}
+		} catch (error) {
+			console.error(`Error deleting file: ${filePath}`);
+		}
+	});
+}
