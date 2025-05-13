@@ -1,4 +1,11 @@
 # 🎭 ParaBank E2E Test Automation with Playwright
+## 📌 Notes
+	• The app itself is inconsistent / intermittent (since it is a public demo application)
+ 	• There are instances that certain functionality is down and not working 
+  	(e.g. Find Transactions, logging out after registration then when logs back error is showing, etc.)
+	• Test might be affected by the app intermittent functionalities (You would need to wait for a certain time)
+ 	• Check the functionality or scenario manually if it is not working in automation script
+ 
 
 ## 📌 Notes
 
