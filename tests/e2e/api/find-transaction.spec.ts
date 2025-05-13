@@ -11,7 +11,7 @@ test('Find transaction by amount | GET', async ({ findTransactionService }) => {
 		paymentAmount
 	);
 	const responseBody = await response.json();
-
+	console.log(responseBody);
 	await expect(response).toBeOK();
 	expect(response.status()).toBe(200);
 	expect(response.statusText()).toBe('OK');
