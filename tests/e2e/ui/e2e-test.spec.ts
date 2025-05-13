@@ -53,7 +53,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 			);
 		});
 
-		await test.step('Create a Savings account', async () => {
+		await test.step('Create a savings account', async () => {
 			await globalNavigationPage.clickOpenNewAccountLink();
 			newAccountNumber = await openNewAccountPage.openNewAccount(
 				data.accountType,
@@ -73,8 +73,9 @@ test.describe('Parabank End-To-End User Flow', () => {
 
 		await test.step('Validate account balance', async () => {
 			await globalNavigationPage.clickAccountsOverviewLink();
-			expect(await accountsOverviewPage.getAccountBalance(newAccountNumber)).toEqual(
-				data.newAccountBalance
+			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toBeVisible();
+			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toHaveText(
+				data.minimumDepositAmount
 			);
 		});
 
@@ -97,6 +98,14 @@ test.describe('Parabank End-To-End User Flow', () => {
 			await expect(billPaymentPage.billPaymentSuccessMessage).toBeVisible();
 			await expect(billPaymentPage.billPaymentSuccessMessage).toHaveText(
 				MESSAGES.BILL_PAYMENT_SUCCESS(payeeData.payeeName, data.paymentAmount, newAccountNumber)
+			);
+		});
+
+		await test.step('Verify the account balance after payment', async () => {
+			await globalNavigationPage.clickAccountsOverviewLink();
+			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toBeVisible();
+			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toHaveText(
+				data.expectedBalanceAfterPayment
 			);
 		});
 	});

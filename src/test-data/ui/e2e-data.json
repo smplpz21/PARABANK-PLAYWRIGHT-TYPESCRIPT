@@ -7,5 +7,6 @@
 	"accountsOverviewTitle": "Accounts Overview",
 	"authStoragePath": "src/auth/login.json",
 	"metaDataPath": "src/auth/data.meta.json",
-	"newAccountBalance": "$100.00"
+	"minimumDepositAmount": "$100.00",
+	"expectedBalanceAfterPayment": "$70.00"
 }
