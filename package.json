@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"test:e2e": "npx playwright test tests/e2e/ui/sample-test.spec.ts  --headed --project=chromium && npx playwright test tests/e2e/api/find-transaction.spec.ts"
+		"test:e2e": "npx playwright test tests/e2e/ui/e2e-test.spec.ts  --headed --project=chromium && npx playwright test tests/e2e/api/find-transaction.spec.ts"
 	},
 	"keywords": [],
 	"author": "",

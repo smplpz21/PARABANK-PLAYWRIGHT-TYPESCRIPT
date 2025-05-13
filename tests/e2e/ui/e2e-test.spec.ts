@@ -60,8 +60,12 @@ test.describe('Parabank End-To-End User Flow', () => {
 				data.accountType,
 				existingAccountNumber
 			);
-			// Save the newly created account number and amount to pay to a JSON file for api test
-			writeTestData(data.metaDataPath, { newAccountNumber, paymentAmount: data.paymentAmount });
+			// Save the newly created account number, amount to pay and payeeName to a JSON file
+			writeTestData(data.metaDataPath, {
+				newAccountNumber,
+				paymentAmount: data.paymentAmount,
+				payeeName: payeeData.payeeName,
+			});
 			await expect(openNewAccountPage.openAccountSuccessMessage).toBeVisible();
 			await expect(openNewAccountPage.openAccountSuccessMessage).toHaveText(
 				MESSAGES.ACCOUNT_CREATION_SUCCESS(newAccountNumber)
