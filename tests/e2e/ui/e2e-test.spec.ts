@@ -1,5 +1,5 @@
 import { test, expect } from 'src/fixtures/uiFixture';
-import { MESSAGES } from 'src/utils/constants';
+import { MESSAGES, TRANSACTIONS } from 'src/utils/constants';
 import { generateUserData, generatePayeeData } from 'src/utils/data-generator';
 import { readTestData, writeTestData } from 'src/utils/json-handler';
 
@@ -75,7 +75,7 @@ test.describe('Parabank End-To-End User Flow', () => {
 			await globalNavigationPage.clickAccountsOverviewLink();
 			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toBeVisible();
 			await expect(accountsOverviewPage.accountBalance(newAccountNumber)).toHaveText(
-				data.minimumDepositAmount
+				TRANSACTIONS.MINIMUM_DEPOSIT_AMOUNT
 			);
 		});
 

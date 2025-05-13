@@ -16,3 +16,7 @@ export const MESSAGES = {
 	BILL_PAYMENT_SUCCESS: (payeeName: string, amount: string, from: string) =>
 		`Bill Payment Complete Bill Payment to ${payeeName} in the amount of $${amount}.00 from account ${from} was successful. See Account Activity for more details.`,
 };
+
+export const TRANSACTIONS = {
+	MINIMUM_DEPOSIT_AMOUNT: '100',
+};
