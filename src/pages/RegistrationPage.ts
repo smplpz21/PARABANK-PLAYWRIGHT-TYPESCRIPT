@@ -80,8 +80,6 @@ export default class RegistrationPage extends BasePage {
 			// Generate new username only
 			const newUser = generateUserData();
 			data.username = newUser.username;
-
-			await this.fillTextbox(this.userNameTextbox, '');
 		}
 	}
 }
